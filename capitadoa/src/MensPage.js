@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import logo from './images/logo.png';
-import './App.css';
-import API from '../utils/API'
+// import './Men.css';
+import API from './utils/API'
 
 class Mens extends Component {
 state = {

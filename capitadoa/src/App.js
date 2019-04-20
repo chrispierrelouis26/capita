@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import logo from './images/logo.png';
-import './App.css';
 import API from './utils/API'
-import Mens from './Components/MensPage'
+import Mens from './MensPage'
 import Routes from './routes'
+import './App.css'
 
 
 
