@@ -3,19 +3,12 @@ import React, { Component } from 'react';
 import './App.css';
 import API from './utils/API'
 import Mens from './Components/MensPage'
+import Routes from './routes'
 
-class App extends Component {
-  render() {
-    return (
-  <div>
-<Mens />
-  </div>
-      
-    );
-  }
-}
 
-export default App;
+
+export default ()=>  <Routes/>
+
 
 {/* 
 // {board.imgUrl}
