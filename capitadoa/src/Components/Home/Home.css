@@ -1,6 +1,6 @@
 
 body{
-    background-color: black;
+    background: url('../images/stars.gif')
 }
 .box-1{
     flex:1;
@@ -17,6 +17,7 @@ body{
 
 
 .container-1 div{
+   color: #f6e948;
     margin-top:20px;
 }
 
@@ -43,8 +44,7 @@ body{
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
     animation: 
-    fadeIn 6s,
-      typing 3.5s steps(40, end),
+      typing 5.5s steps(40, end),
       blink-caret .75s step-end infinite;
     
   }
