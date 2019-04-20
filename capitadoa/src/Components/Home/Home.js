@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Home.css";
 import image from "../images/home-alien.png";
+import logoTwo from '../images/capitalogo-2.jpg'
 
 class Home extends Component {
   render() {
@@ -28,6 +29,9 @@ class Home extends Component {
               </h1>
             </div>
           </div>
+        </div>
+        <div>
+            <img src = {logoTwo} />
         </div>
       </div>
     );
