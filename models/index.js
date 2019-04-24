@@ -1,5 +1,6 @@
 module.exports = {
     Snowboard:require("./SnowBoards"),
-    Cart: require('./Cart')
+    Cart: require('./Cart'),
+    Female: require('./FemaleBoards')
    
 };

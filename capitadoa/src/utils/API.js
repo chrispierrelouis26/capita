@@ -11,7 +11,13 @@ export default {
 
   getOneBoard: function() {
     return axios.get("/api/order");
+  },
+
+  getFemaleBoards: function(){
+    return axios.get('/api/allfemales')
   }
+
+
 
   // addToCart: function(){
   //     return axios.post('/api/addboard/:id')

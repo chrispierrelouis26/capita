@@ -71,6 +71,65 @@ app.get("/scrape", (req, res) => {
     });
 });
 
+
+
+// getting what i need for female page
+app.get("/scrape2", (req, res) => {
+  axios
+    .get("https://www.capitasnowboarding.com/womens")
+    .then(function(response) {
+      //loading data into cheerio and sav it to $ for a shorthand selector
+      var $ = cheerio.load(response.data);
+      $("div.product-snowboard__teaser").each(function(i, element) {
+        // Save the text of the element in a "title" variable
+        var boardTitle = $(element)
+          .find("a")
+          .find("div")
+          .find("div.id")
+          .text();
+        var imgUrl = $(element)
+          .find("a")
+          .find("img")
+          .attr("src");
+        const boardName = $(element)
+          .find("a")
+          .find("div")
+          .children()
+          .eq(1)
+          .html();
+
+        if (boardTitle && imgUrl && boardName) {
+          db.Female.create({
+            boardTitle: boardTitle,
+            imgUrl: imgUrl,
+            boardName: boardName
+          }),
+            function(err, inserted) {
+              if (err) {
+                console.log(err);
+              }
+            };
+            res.json(imgUrl);
+        }
+      });
+
+      res.send("scrape complete");
+    })
+    .catch(function(err) {
+      // If an error occurred, log it
+      console.log(err);
+    });
+});
+
+//getting all female boards
+
+app.get('/api/allfemales', (req,res)=> {
+  db.Female.find({})
+  .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+})
+
+
 //getting all the data from scrape
 
 app.get("/api/all", (req, res) => {
