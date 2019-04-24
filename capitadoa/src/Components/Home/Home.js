@@ -1,38 +1,46 @@
 import React, { Component } from "react";
 import "./Home.css";
+import Zoom from 'react-reveal/Zoom';
 import image from "../images/home-alien.png";
+import {BrowserRouter, Route , Link} from 'react-router-dom'
 import logoTwo from '../images/capitalogo-2.jpg'
+import Mens from '../MensPage'
+
 
 class Home extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="container-1">
-          <div className="box-1">
-            <h6>Product</h6>
-          </div>
-          <div className="box-2">
-            <h6>The Mothership</h6>
-          </div>
-          <div className="box-3">
-            <h6>People</h6>
-          </div>
-        </div>
-        <div className="container-2">
-          <div className="box-4">
-            <img className="pinkman" src={image} />
-          </div>
-          <div className="box-5">
-            <div className="typewriter">
-              <h1>
-                INTERDIMENSIONAL EXPLORERS CLUB JOURNEY BEYOND DESTINATION
-              </h1>
-            </div>
-          </div>
-        </div>
-        <div>
-            <img src = {logoTwo} />
-        </div>
+      <div>
+ 
+   <header>
+     <div className = "container">
+     <nav>
+       <ul>
+         <li><a href = "#">Home</a></li>
+         <li><a href = "#">The MotherShip</a></li>
+         <li><a href = "#">People</a></li>
+       </ul>
+     </nav>
+     </div>
+   </header>
+   <div>
+     <Zoom>
+   <img className="pinkman" src={image} />
+   </Zoom>
+   </div>
+   <div className ='container'>
+   <div className = 'typewriter'>
+   
+   <p>EVERYTHING IS POSSIBLE</p>
+   
+   </div>
+  
+   <div className ='wrap'>
+   <Link to={'/men'} className="button">Possibilites</Link>
+     </div>
+     
+        
+   </div>
       </div>
     );
   }

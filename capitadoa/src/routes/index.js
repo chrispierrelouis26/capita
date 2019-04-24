@@ -1,6 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-import Mens from '../MensPage'
+import Mens from '../Components/MensPage'
 import Home from '../Components/Home/Home'
 
 

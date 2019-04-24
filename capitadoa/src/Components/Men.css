@@ -1,6 +1,6 @@
 
 body{
-    background: url('./images/capitabackground.jpg');
+    /* background: url('./images/capitabackground.jpg'); */
   
   } 
   
@@ -70,3 +70,22 @@ body{
     font-size: 20px
   }
   
+  .container-2 {
+    display:flex;
+    flex-wrap:wrap;
+    text-align:center;
+    margin:auto;
+    padding-right: 300px;
+    padding-left: 300px;
+  
+  }
+
+  .form-1{
+    flex: 1
+  }
+  .form-2{
+    flex: 1
+  }
+  .form-3{
+    flex: 1
+  }

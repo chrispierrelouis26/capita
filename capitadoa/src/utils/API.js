@@ -10,7 +10,7 @@ export default {
   },
 
   getOneBoard: function() {
-    return axios.get("/api/snowboard/:id");
+    return axios.get("/api/order");
   }
 
   // addToCart: function(){
