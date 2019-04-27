@@ -7,7 +7,9 @@ body{
   .img:hover {
     transform: scale(1.5); 
   }
-  
+  .container-2 {
+    color: yellow;
+  }
   .container-1 {
     display:flex;
     flex-wrap:wrap;
@@ -88,4 +90,14 @@ body{
   }
   .form-3{
     flex: 1
+  }
+
+  .filteredData{
+    display:flex;
+    flex-wrap:wrap;
+    text-align:center;
+    margin:auto;
+    padding-right: 300px;
+    padding-left: 300px;
+  
   }

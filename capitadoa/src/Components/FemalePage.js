@@ -6,19 +6,28 @@ class Mens extends Component {
   state = {
     boards: [],
     sorted: []
+
+    
   };
  
   componentDidMount() {
     API.getFemaleBoards().then(res => this.setState({ boards: res.data }));
-    this.fetchSort();
+    
   
   
   }
+  fetchSort() {
+    API.getAllBoards().then(res => {
+      this.setState({
+       sorted: res.data
+      });
 
-  fetchSort(){
-    API.getOneBoard().then(res => this.setState({sorted: res.data}))
-    console.log('pushed');
+      console.log(res.data);
+    });
   }
+  
+
+  
 
   render() {
     return (
@@ -165,6 +174,7 @@ class Mens extends Component {
               <img src={board.imgUrl} />
               <h4>{board.boardName}</h4>
               <p>{board.boardTitle}</p>
+              <p>{board.price}</p>
             </div>
           ))}
 
@@ -182,6 +192,10 @@ class Mens extends Component {
           ))}
         </div> */}
         </div>
+
+     <div>
+       <button onClick={this.fetchSort.bind(this)}>Click me</button>
+     </div>
       </div>
     );
   }
@@ -196,3 +210,7 @@ export default Mens;
 //{board.boardTitle}
 //{this.state.boards.map(board => () */
 }
+
+
+//fisrt created a state to store the filtered data.
+// instert data into the state 

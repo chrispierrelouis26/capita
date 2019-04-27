@@ -14,7 +14,19 @@ const SnowBoardSchema = new Schema({
   },
   boardName: {
     type: String
-  }
+  },
+  price: {
+    type: Number
+  },
+  powder: {
+    type: Number
+  },
+  allMountain: {
+    type: Number
+  },
+  park: {
+    type: Number
+  },
 });
 
 const Snowboard = mongoose.model("snowboard", SnowBoardSchema);

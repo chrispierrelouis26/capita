@@ -14,6 +14,9 @@ const femaleBoardSchema = new Schema({
   },
   boardName: {
     type: String
+  },
+  price: {
+    type: Number
   }
 });
 

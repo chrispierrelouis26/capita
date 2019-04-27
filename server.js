@@ -1,4 +1,3 @@
-
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const cheerio = require("cheerio");
@@ -30,15 +29,15 @@ app.get("/scrape", (req, res) => {
     .get("https://www.capitasnowboarding.com/mens")
     .then(function(response) {
       //loading data into cheerio and sav it to $ for a shorthand selector
-      var $ = cheerio.load(response.data);
+      const $ = cheerio.load(response.data);
       $("div.product-snowboard__teaser").each(function(i, element) {
-        // Save the text of the element in a "title" variable
-        var boardTitle = $(element)
+        // Save the text of the element in a "title" constiable
+        const boardTitle = $(element)
           .find("a")
           .find("div")
           .find("div.id")
           .text();
-        var imgUrl = $(element)
+        const imgUrl = $(element)
           .find("a")
           .find("img")
           .attr("src");
@@ -53,7 +52,9 @@ app.get("/scrape", (req, res) => {
           db.Snowboard.create({
             boardTitle: boardTitle,
             imgUrl: imgUrl,
-            boardName: boardName
+            boardName: boardName,
+
+
           }),
             function(err, inserted) {
               if (err) {
@@ -71,23 +72,21 @@ app.get("/scrape", (req, res) => {
     });
 });
 
-
-
 // getting what i need for female page
 app.get("/scrape2", (req, res) => {
   axios
     .get("https://www.capitasnowboarding.com/womens")
     .then(function(response) {
       //loading data into cheerio and sav it to $ for a shorthand selector
-      var $ = cheerio.load(response.data);
+      const $ = cheerio.load(response.data);
       $("div.product-snowboard__teaser").each(function(i, element) {
         // Save the text of the element in a "title" variable
-        var boardTitle = $(element)
+        const boardTitle = $(element)
           .find("a")
           .find("div")
           .find("div.id")
           .text();
-        var imgUrl = $(element)
+        const imgUrl = $(element)
           .find("a")
           .find("img")
           .attr("src");
@@ -109,7 +108,7 @@ app.get("/scrape2", (req, res) => {
                 console.log(err);
               }
             };
-            res.json(imgUrl);
+          res.json(imgUrl);
         }
       });
 
@@ -123,12 +122,11 @@ app.get("/scrape2", (req, res) => {
 
 //getting all female boards
 
-app.get('/api/allfemales', (req,res)=> {
+app.get("/api/allfemales", (req, res) => {
   db.Female.find({})
-  .then(data => res.json(data))
+    .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
-})
-
+});
 
 //getting all the data from scrape
 
@@ -177,6 +175,38 @@ app.get("/api/snowboard/:id", (req, res) => {
       console.log(err);
     });
 });
+
+// sorting from least to most expensive
+app.get('/api/largest', (req,res)=> {
+  db.Snowboard.find().sort({price: -1})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+app.get('/api/smallest', (req,res)=> {
+  db.Snowboard.find().sort({price: 1})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+app.get('/api/powder', (req,res)=> {
+  db.Snowboard.find().sort({powder: -1})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+
+app.get('/api/mountain', (req,res)=> {
+  db.Snowboard.find().sort({mountain: -1})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+app.get('/api/parklevel', (req,res)=> {
+  db.Snowboard.find().sort({parkLevel: -1})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
 
 // POST REQUESTS
 // POST request to add specific item to cart
