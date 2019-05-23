@@ -9,6 +9,15 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3002;
 const path = require("path");
 
+if(process.env.NODE_ENV === 'production'){
+  //set static folder
+  app.use(express.static('client/build'));
+}
+app.get('*',(req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
+
 app.use(cors());
 const router = express.Router();
 
@@ -216,6 +225,7 @@ app.post("/api/addboard/:id", (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(404).json(err));
 });
+
 
 app.listen(PORT, () => {
   console.log(`server is up, app listening on ${PORT}`);
